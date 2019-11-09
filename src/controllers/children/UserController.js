@@ -1,6 +1,6 @@
 // Imports
 const router = require('express').Router();
-const UserService = require('../services/UserServices');
+const UserService = require('../../services/UserServices');
 
 // Route to get all users
 router.get('/', (req, res) => {

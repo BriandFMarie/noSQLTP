@@ -1,5 +1,5 @@
 // Imports
-const VideoGame = require('../models/VIdeoGame');
+const VideoGame = require('../models/VideoGame');
 const logger = require('../config/logger');
 
 // To get all video games

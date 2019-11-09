@@ -1,8 +1,8 @@
 // Imports
 const express = require('express');
-const UserController = require('./UserController');
-const VideoGameController = require('./VideoGameController');
-const AnimalController = require('./AnimalController');
+const UserController = require('./children/UserController');
+const VideoGameController = require('./children/VideoGameController');
+const AnimalController = require('./children/AnimalController');
 
 const app = express();
 

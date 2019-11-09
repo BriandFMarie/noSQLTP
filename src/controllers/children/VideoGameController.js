@@ -1,6 +1,6 @@
 // Imports
 const router = require('express').Router();
-const VideoGameService = require('../services/VideoGameServices');
+const VideoGameService = require('../../services/VideoGameServices');
 
 // Route to get all video games
 router.get('/', (req, res) => {

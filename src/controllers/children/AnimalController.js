@@ -1,6 +1,6 @@
 // Imports
 const router = require('express').Router();
-const AnimalService = require('../services/AnimalServices');
+const AnimalService = require('../../services/AnimalServices');
 
 // Route to get all animals
 router.get('/', (req, res) => {
