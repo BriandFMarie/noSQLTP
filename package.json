@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha -t 30000 ./tests/init.js ./tests/unit/**/*.js --exit",
+    "test": "mocha -t 30000 ./tests/init.js ./tests/unit/**/*.js --exit",
     "start": "nodemon index.js",
     "lint": "eslint ./**/*.js"
   },

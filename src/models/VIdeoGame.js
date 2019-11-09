@@ -10,7 +10,7 @@ const VideoGameSchema = mongoose.Schema({
         required: true
     },
     genres: {
-        type: Number,
+        type: Array,
         required: true
     },
     developer: {
