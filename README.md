@@ -28,8 +28,14 @@ TP for a School's project to explore noSQL (with mongodb, elasticsearch, kibana)
 Run `npm start` for a dev server. Navigate to `http://localhost:3000`.
 You will have to add 'nodemon' in global if you want that application change automatically new changes.
 
+
 ## Running unit tests
 Run `npm test`.
+
+
+## API Documentation
+To see API Documentation, you have to navigate to `http://localhost:3000/api-docs`.
+
 
 ## Project
 
