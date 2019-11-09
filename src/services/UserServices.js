@@ -8,7 +8,7 @@ function getAllUsers(req, res) {
         .then(users => {
             return res.status(200).json({ success: true, result: users });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get one user
@@ -20,7 +20,7 @@ function getUser(req, res) {
             }
              return res.status(201).json({ success: true, result: user });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get users with firstName
@@ -32,7 +32,7 @@ function getUsersByName(req, res) {
             }
             return res.status(201).json({ success: true, result: user });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To create an user
@@ -51,7 +51,7 @@ function createUser(req, res) {
             return res.status(201).json({ success: true, result: newUser });
         })
         .then(() => logger.info("New user is created"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To update an user
@@ -64,7 +64,7 @@ function updateUser(req, res) {
             return res.status(201).json({ success: true, message: "User updated" });
         })
         .then(() => logger.info("User updated"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To delete an user
@@ -77,7 +77,7 @@ function deleteUser(req, res) {
             return res.status(201).json({ success: true, message: "User deleted" });
         })
         .then(() => logger.info("User deleted"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // Exports

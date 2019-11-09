@@ -14,7 +14,7 @@ const AnimalSchema = mongoose.Schema({
         required: true
     },
     color: {
-        type: String,
+        type: Array,
         required: false
     }
 });

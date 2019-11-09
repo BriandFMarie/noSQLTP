@@ -1,0 +1,681 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api with Users, Animals and Video Games collections for TP in NoSQL for school",
+    "version": "1.0.0",
+    "title": "NoSQL-TP API",
+    "contact": {
+      "name": "Marie Briand"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "User",
+      "description": "All queries for users"
+    },
+    {
+      "name": "VideoGame",
+      "description": "All queries for videogames"
+    },
+    {
+      "name": "Animal",
+      "description": "All queries for animals"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all users to the database",
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/id/{userId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get one user to the database",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "description": "to find one user"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "User doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/name/{userFirstName}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user(s) to the database",
+        "operationId": "getUsersByName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userFirstName",
+            "required": true,
+            "type": "string",
+            "description": "to find one or more user(s)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "User doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/create": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add a new user to the database",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User",
+            "description": "Object that we need to add an user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User created"
+          },
+          "404": {
+            "description": "User doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/update/{userId}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update a user to the database",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "User",
+            "description": "Object that we need to update an user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated"
+          },
+          "404": {
+            "description": "User doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/delete/{userId}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete an user to the database",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "User",
+            "description": "Object that we need to delete an user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted"
+          },
+          "404": {
+            "description": "User doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame": {
+      "get": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Get all video games to the database",
+        "operationId": "getAllVideoGames",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame/id/{videoGameId}": {
+      "get": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Get one video game to the database",
+        "operationId": "getVideoGame",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "videoGameId",
+            "required": true,
+            "type": "string",
+            "description": "to find one video game"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Video Game doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame/name/{videoGameName}": {
+      "get": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Get video game(s) to the database",
+        "operationId": "getVideoGamesByName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "videoGameName",
+            "required": true,
+            "type": "string",
+            "description": "to find one or more video game(s)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Video Game doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame/create": {
+      "post": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Add a new video game to the database",
+        "operationId": "createVideoGame",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "VideoGame",
+            "description": "Object that we need to add a video game",
+            "schema": {
+              "$ref": "#/definitions/VideoGame"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Game created"
+          },
+          "404": {
+            "description": "Video Game doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame/update/{videoGameId}": {
+      "put": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Update a video game to the database",
+        "operationId": "updateVideoGame",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "videoGameId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "VideoGame",
+            "description": "Object that we need to update a video game",
+            "schema": {
+              "$ref": "#/definitions/VideoGame"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Game updated"
+          },
+          "404": {
+            "description": "Video Game doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/videogame/delete/{videoGameId}": {
+      "delete": {
+        "tags": [
+          "VideoGame"
+        ],
+        "summary": "Delete a video game to the database",
+        "operationId": "deleteVideoGame",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "videoGameId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "VideoGame",
+            "description": "Object that we need to delete a video game",
+            "schema": {
+              "$ref": "#/definitions/VideoGame"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Game deleted"
+          },
+          "404": {
+            "description": "Video Game doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal": {
+      "get": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Get all animals to the database",
+        "operationId": "getAllAnimals",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/id/{animalId}": {
+      "get": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Get one animal to the database",
+        "operationId": "getAnimal",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animalId",
+            "required": true,
+            "type": "string",
+            "description": "to find one animal"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/name/{animalName}": {
+      "get": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Get animal(s) to the database",
+        "operationId": "getAnimalByName",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animalName",
+            "required": true,
+            "type": "string",
+            "description": "to find one or more animal(s)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/breed/{animalBreed}": {
+      "get": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Get animal(s) to the database",
+        "operationId": "getAnimalByBreed",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animalBreed",
+            "required": true,
+            "type": "string",
+            "description": "to find one or more animal(s)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/create": {
+      "post": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Add a new animal to the database",
+        "operationId": "createAnimal",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Animal",
+            "description": "Object that we need to add an animal",
+            "schema": {
+              "$ref": "#/definitions/Animal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal created"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/update/{animalId}": {
+      "put": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Update an animal to the database",
+        "operationId": "updateAnimal",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animalId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Animal",
+            "description": "Object that we need to update an animal",
+            "schema": {
+              "$ref": "#/definitions/Animal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal updated"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/animal/delete/{animalId}": {
+      "delete": {
+        "tags": [
+          "Animal"
+        ],
+        "summary": "Delete an animal to the database",
+        "operationId": "deleteAnimal",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "animalId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Animal",
+            "description": "Object that we need to delete an animal",
+            "schema": {
+              "$ref": "#/definitions/Animal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Animal deleted"
+          },
+          "404": {
+            "description": "Animal doesn't exist"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "age": {
+          "type": "number"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "occupation": {
+          "type": "integer"
+        },
+        "isPlayer": {
+          "type": "boolean"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "VideoGame": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "genres": {
+          "type": "string"
+        },
+        "developer": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "editor": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "platform": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "xml": {
+        "name": "VideoGame"
+      }
+    },
+    "Animal": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "breed": {
+          "type": "string"
+        },
+        "age": {
+          "type": "number"
+        },
+        "color": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "xml": {
+        "name": "Animal"
+      }
+    }
+  }
+}

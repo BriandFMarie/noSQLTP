@@ -8,7 +8,7 @@ function getAllAnimals(req, res) {
         .then(animals => {
             return res.status(200).json({ success: true, result: animals });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get one animal
@@ -20,7 +20,7 @@ function getAnimal(req, res) {
             }
             return res.status(201).json({ success: true, result: animal });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get animals with name
@@ -32,7 +32,7 @@ function getAnimalByName(req, res) {
             }
             return res.status(201).json({ success: true, result: animal });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get animals with breed
@@ -44,7 +44,7 @@ function getAnimalByBreed(req, res) {
             }
             return res.status(201).json({ success: true, result: animal });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To create an animal
@@ -61,7 +61,7 @@ function createAnimal(req, res) {
             return res.status(201).json({ success: true, result: newAnimal });
         })
         .then(() => logger.info("New animal is created"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To update an animal
@@ -74,7 +74,7 @@ function updateAnimal(req, res) {
             return res.status(201).json({ success: true, message: "Animal updated" });
         })
         .then(() => logger.info("Animal updated"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To delete an animal
@@ -87,7 +87,7 @@ function deleteAnimal(req, res) {
             return res.status(201).json({ success: true, message: "Animal deleted" });
         })
         .then(() => logger.info("Animal deleted"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // Exports

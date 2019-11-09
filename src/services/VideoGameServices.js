@@ -8,7 +8,7 @@ function getAllVideoGames(req, res) {
         .then(videoGames => {
             return res.status(200).json({ success: true, result: videoGames });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get one video game
@@ -20,7 +20,7 @@ function getVideoGame(req, res) {
             }
             return res.status(201).json({ success: true, result: videoGame });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To get video game with name
@@ -32,7 +32,7 @@ function getVideoGamesByName(req, res) {
             }
             return res.status(201).json({ success: true, result: videoGame });
         })
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To create a video game
@@ -52,7 +52,7 @@ function createVideoGame(req, res) {
             return res.status(201).json({ success: true, result: newVideoGame });
         })
         .then(() => logger.info("New Video Game is created"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To update a video game
@@ -65,7 +65,7 @@ function updateVideoGame(req, res) {
             return res.status(201).json({ success: true, message: "Video Game updated" });
         })
         .then(() => logger.info("Video Game updated"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // To delete a video game
@@ -78,7 +78,7 @@ function deleteVideoGame(req, res) {
             return res.status(201).json({ success: true, message: "Video Game deleted" });
         })
         .then(() => logger.info("Video Game deleted"))
-        .catch(err => res.status(500).json({ success: false, message: err }));
+        .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // Exports
