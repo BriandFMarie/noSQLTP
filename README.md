@@ -45,3 +45,15 @@ To develop an API REST with a database MongoDB :
 - You have to have 3 collections Mongo
 - To have for each collection : GET/all, GET/by ID, POST, PUT, DELETE.
 - To have unit tests (optional)
+
+
+## Rappel ELK
+
+You have to install ElasticSearch, Kibana and logstash to see logs.
+
+After that, you have to add a `kibana.yml` and to uncommented `elasticsearch.hosts: ["http://localhost:9200"]`.
+You have to create a `logstash.conf` in root to and to add some configuration.
+
+**WARNING**: If you're on windows you have to configure yours variables environments.
+ 
+To finished, you have to run application, elasticsearch, kibana and logstash (for logstash you need to say what config file you want like that: `logstash.bat -f logstash.conf`).

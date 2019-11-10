@@ -3,11 +3,17 @@
 ////////////////////
 
 const winston = require('winston');
+const Elasticsearch = require('winston-elasticsearch');
 
 
 /////////////////////
 // Configuration
 ////////////////////
+
+const esTransportOpts = {
+    level: 'info',
+    clientOpts: { node: 'http://localhost:9200' }
+};
 
 const logger = winston.createLogger({
     level: 'debug',
@@ -18,7 +24,8 @@ const logger = winston.createLogger({
         winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
     ),
     transports: [
-        new winston.transports.Console({ colorize: true })
+        new winston.transports.Console({ colorize: true }),
+        new Elasticsearch(esTransportOpts)
     ]
 });
 
