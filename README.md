@@ -56,4 +56,4 @@ You have to create a `logstash.conf` in root to and to add some configuration.
 
 **WARNING**: If you're on windows you have to configure yours variables environments.
  
-To finished, you have to run application, elasticsearch, kibana and logstash (for logstash you need to say what config file you want like that: `logstash.bat -f logstash.conf`).
+To finished, you have to run application, elasticsearch (port: 9200), kibana (port: 5601) and logstash (for logstash you need to say what config file you want like that: `logstash.bat -f logstash.conf`).
