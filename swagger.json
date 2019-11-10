@@ -609,7 +609,7 @@
           "type": "string"
         },
         "occupation": {
-          "type": "integer"
+          "type": "string"
         },
         "isPlayer": {
           "type": "boolean"
