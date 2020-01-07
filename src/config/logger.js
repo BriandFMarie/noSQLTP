@@ -25,7 +25,8 @@ const logger = winston.createLogger({
     ),
     transports: [
         new winston.transports.Console({ colorize: true }),
-        new Elasticsearch(esTransportOpts)
+        new winston.transports.File({ filename: 'logs.log' }),
+        new Elasticsearch(esTransportOpts),
     ]
 });
 
