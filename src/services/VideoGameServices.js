@@ -57,14 +57,17 @@ function createVideoGame(req, res) {
 
 // To update a video game
 function updateVideoGame(req, res) {
-    VideoGame.findByIdAndUpdate(req.params.videoGameId)
+    VideoGame.findOneAndUpdate(req.params.videoGameId, req.body, { new: true })
         .then(videoGame => {
-            if (!videoGame || !videoGame.length) {
+            if (!videoGame) {
                 return res.status(404).json({ success: false, message: "Video Game doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "Video Game updated" });
         })
-        .then(() => logger.info("Video Game updated"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("Video Game updated")
+                : logger.info("Video Game doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
@@ -72,14 +75,20 @@ function updateVideoGame(req, res) {
 function deleteVideoGame(req, res) {
     VideoGame.findByIdAndDelete(req.params.videoGameId)
         .then(videoGame => {
-            if (!videoGame || !videoGame.length) {
+            if (!videoGame) {
                 return res.status(404).json({ success: false, message: "Video Game doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "Video Game deleted" });
         })
-        .then(() => logger.info("Video Game deleted"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("Video Game deleted")
+                : logger.info("Video Game doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // Exports
-module.exports = { getAllVideoGames, getVideoGame, getVideoGamesByName, createVideoGame, updateVideoGame, deleteVideoGame };
+module.exports = {
+    // eslint-disable-next-line max-len
+ getAllVideoGames, getVideoGame, getVideoGamesByName, createVideoGame, updateVideoGame, deleteVideoGame
+};

@@ -66,14 +66,17 @@ function createAnimal(req, res) {
 
 // To update an animal
 function updateAnimal(req, res) {
-    Animal.findByIdAndUpdate(req.params.animalId)
+    Animal.findOneAndUpdate(req.params.animalId, req.body, { new: true })
         .then(animal => {
-            if (!animal || !animal.length) {
+            if (!animal) {
                 return res.status(404).json({ success: false, message: "Animal doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "Animal updated" });
         })
-        .then(() => logger.info("Animal updated"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("Animal updated")
+                : logger.info("Animal doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
@@ -81,14 +84,21 @@ function updateAnimal(req, res) {
 function deleteAnimal(req, res) {
     Animal.findByIdAndDelete(req.params.animalId)
         .then(animal => {
-            if (!animal || !animal.length) {
+            if (!animal) {
                 return res.status(404).json({ success: false, message: "Animal doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "Animal deleted" });
         })
-        .then(() => logger.info("Animal deleted"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("Animal deleted")
+                : logger.info("Animal doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
 // Exports
-module.exports = { getAllAnimals, getAnimal, getAnimalByName, getAnimalByBreed, createAnimal, updateAnimal, deleteAnimal };
+// eslint-disable-next-line max-len
+module.exports = {
+    // eslint-disable-next-line max-len
+ getAllAnimals, getAnimal, getAnimalByName, getAnimalByBreed, createAnimal, updateAnimal, deleteAnimal
+};

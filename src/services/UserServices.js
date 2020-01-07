@@ -56,14 +56,17 @@ function createUser(req, res) {
 
 // To update an user
 function updateUser(req, res) {
-    User.findByIdAndUpdate(req.params.userId)
+    User.findOneAndUpdate(req.params.userId, req.body, { new: true })
         .then(user => {
-            if (!user || !user.length) {
+            if (!user) {
                 return res.status(404).json({ success: false, message: "User doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "User updated" });
         })
-        .then(() => logger.info("User updated"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("User updated")
+                : logger.info("User doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
@@ -71,12 +74,15 @@ function updateUser(req, res) {
 function deleteUser(req, res) {
     User.findByIdAndDelete(req.params.userId)
         .then(user => {
-            if (!user || !user.length) {
+            if (!user) {
                 return res.status(404).json({ success: false, message: "User doesn't exist" });
             }
             return res.status(201).json({ success: true, message: "User deleted" });
         })
-        .then(() => logger.info("User deleted"))
+        .then(() => {
+            return res.statusCode === 201 ? logger.info("User deleted")
+                : logger.info("User doesn't exist");
+        })
         .catch(err => res.status(405).json({ success: false, message: err }));
 }
 
